@@ -1,0 +1,4 @@
+D:\ASP.NET\New folder\New folder (3)\TaskManager\Application\obj\Debug\net6.0\Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\ASP.NET\New folder\New folder (3)\TaskManager\Application\obj\Debug\net6.0\Application.AssemblyInfoInputs.cache
+D:\ASP.NET\New folder\New folder (3)\TaskManager\Application\obj\Debug\net6.0\Application.AssemblyInfo.cs
+D:\ASP.NET\New folder\New folder (3)\TaskManager\Application\obj\Debug\net6.0\Application.csproj.CoreCompileInputs.cache
