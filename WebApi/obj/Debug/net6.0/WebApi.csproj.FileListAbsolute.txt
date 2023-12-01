@@ -30,3 +30,17 @@ D:\ASP.NET\New folder\New folder (3)\TaskManager\WebApi\obj\Debug\net6.0\refint\
 D:\ASP.NET\New folder\New folder (3)\TaskManager\WebApi\obj\Debug\net6.0\WebApi.pdb
 D:\ASP.NET\New folder\New folder (3)\TaskManager\WebApi\obj\Debug\net6.0\WebApi.genruntimeconfig.cache
 D:\ASP.NET\New folder\New folder (3)\TaskManager\WebApi\obj\Debug\net6.0\ref\WebApi.dll
+D:\ASP.NET\New folder\New folder (3)\TaskManager\WebApi\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+D:\ASP.NET\New folder\New folder (3)\TaskManager\WebApi\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\ASP.NET\New folder\New folder (3)\TaskManager\WebApi\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\ASP.NET\New folder\New folder (3)\TaskManager\WebApi\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+D:\ASP.NET\New folder\New folder (3)\TaskManager\WebApi\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+D:\ASP.NET\New folder\New folder (3)\TaskManager\WebApi\bin\Debug\net6.0\MySqlConnector.dll
+D:\ASP.NET\New folder\New folder (3)\TaskManager\WebApi\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
+D:\ASP.NET\New folder\New folder (3)\TaskManager\WebApi\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
+D:\ASP.NET\New folder\New folder (3)\TaskManager\WebApi\bin\Debug\net6.0\Application.dll
+D:\ASP.NET\New folder\New folder (3)\TaskManager\WebApi\bin\Debug\net6.0\Domain.dll
+D:\ASP.NET\New folder\New folder (3)\TaskManager\WebApi\bin\Debug\net6.0\Infrastructure.dll
+D:\ASP.NET\New folder\New folder (3)\TaskManager\WebApi\bin\Debug\net6.0\Infrastructure.pdb
+D:\ASP.NET\New folder\New folder (3)\TaskManager\WebApi\bin\Debug\net6.0\Application.pdb
+D:\ASP.NET\New folder\New folder (3)\TaskManager\WebApi\bin\Debug\net6.0\Domain.pdb

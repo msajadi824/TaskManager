@@ -2,3 +2,14 @@ D:\ASP.NET\New folder\New folder (3)\TaskManager\Application\obj\Debug\net6.0\Ap
 D:\ASP.NET\New folder\New folder (3)\TaskManager\Application\obj\Debug\net6.0\Application.AssemblyInfoInputs.cache
 D:\ASP.NET\New folder\New folder (3)\TaskManager\Application\obj\Debug\net6.0\Application.AssemblyInfo.cs
 D:\ASP.NET\New folder\New folder (3)\TaskManager\Application\obj\Debug\net6.0\Application.csproj.CoreCompileInputs.cache
+D:\ASP.NET\New folder\New folder (3)\TaskManager\Application\bin\Debug\net6.0\Application.deps.json
+D:\ASP.NET\New folder\New folder (3)\TaskManager\Application\bin\Debug\net6.0\Application.dll
+D:\ASP.NET\New folder\New folder (3)\TaskManager\Application\bin\Debug\net6.0\Application.pdb
+D:\ASP.NET\New folder\New folder (3)\TaskManager\Application\bin\Debug\net6.0\Domain.dll
+D:\ASP.NET\New folder\New folder (3)\TaskManager\Application\bin\Debug\net6.0\Domain.pdb
+D:\ASP.NET\New folder\New folder (3)\TaskManager\Application\obj\Debug\net6.0\Application.csproj.AssemblyReference.cache
+D:\ASP.NET\New folder\New folder (3)\TaskManager\Application\obj\Debug\net6.0\Application.csproj.CopyComplete
+D:\ASP.NET\New folder\New folder (3)\TaskManager\Application\obj\Debug\net6.0\Application.dll
+D:\ASP.NET\New folder\New folder (3)\TaskManager\Application\obj\Debug\net6.0\refint\Application.dll
+D:\ASP.NET\New folder\New folder (3)\TaskManager\Application\obj\Debug\net6.0\Application.pdb
+D:\ASP.NET\New folder\New folder (3)\TaskManager\Application\obj\Debug\net6.0\ref\Application.dll
