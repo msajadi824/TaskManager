@@ -17,14 +17,14 @@ namespace WebApi.Controllers
             _taskService = taskService;
         }
 
-        [HttpGet]
+        [HttpGet(Name = "GellAllTasks")]
         public async Task<IActionResult> GetTasks()
         {
             var tasks = await _taskService.GetTasks();
             return Ok(tasks);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetTaskById")]
         public async Task<IActionResult> GetTaskById(int id)
         {
             var task = await _taskService.GetTaskById(id);
@@ -36,28 +36,28 @@ namespace WebApi.Controllers
             return Ok(task);
         }
 
-        [HttpPost]
+        [HttpPost(Name = "AddTask")]
         public async Task<IActionResult> AddTask([FromBody] CreateTaskDto task)
         {
             int Id = await _taskService.AddTask(task);
             return CreatedAtAction(nameof(GetTaskById), new { id = Id }, task);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id}", Name = "UpdateTask")]
         public async Task<IActionResult> UpdateTask(int id, [FromBody] UpdateTaskDto task)
         {
             await _taskService.UpdateTask(id, task);
             return NoContent();
         }
 
-        [HttpPatch("{id}/{taskStatus}")]
+        [HttpPatch("{id}/{taskStatus}", Name = "ChangeStatusTask")]
         public async Task<IActionResult> ChangeStatusTask(int id, Domain.Enums.TaskStatusEnum taskStatus)
         {
             await _taskService.ChangeStatusTask(id, taskStatus);
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}", Name = "DeleteTask")]
         public async Task<IActionResult> DeleteTask(int id)
         {
             await _taskService.DeleteTask(id);

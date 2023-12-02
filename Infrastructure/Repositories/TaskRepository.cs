@@ -1,6 +1,5 @@
 ﻿using Application.Dtos;
 using Application.Repositories;
-using AutoMapper;
 using Domain.Models;
 using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
