@@ -1,13 +1,16 @@
-﻿using Domain.Models;
+﻿using Application.Dtos;
+using Domain.Enums;
+using Domain.Models;
 
 namespace Application.Repositories
 {
     public interface ITaskRepository
     {
-        Task<IEnumerable<TaskModel>> GetTasksAsync();
-        Task<TaskModel> GetTaskByIdAsync(int id);
-        Task AddTaskAsync(TaskModel task);
-        Task UpdateTaskAsync(TaskModel task);
-        Task DeleteTaskAsync(int id);
+        Task<IEnumerable<GetTaskDto>> GetTasks();
+        Task<GetTaskDto> GetTaskById(int id);
+        Task<int> AddTask(CreateTaskDto task);
+        Task UpdateTask(int id, UpdateTaskDto task);
+        Task ChangeStatusTask(int id, TaskStatusEnum taskStatus);
+        Task DeleteTask(int id);
     }
 }

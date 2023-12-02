@@ -1,7 +1,10 @@
-﻿using Application.Repositories;
+﻿using Application.Dtos;
+using Application.Repositories;
+using AutoMapper;
 using Domain.Models;
 using Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
@@ -14,29 +17,66 @@ namespace Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<TaskModel>> GetTasksAsync()
+        public async Task<IEnumerable<GetTaskDto>> GetTasks()
         {
-            return await _context.Tasks.ToListAsync();
+            var tasks = await _context.Tasks.ToListAsync();
+            return tasks.Select(taskModel =>
+                new GetTaskDto
+                {
+                    Id = taskModel.Id,
+                    Title = taskModel.Title,
+                    Description = taskModel.Description,
+                    Status = taskModel.Status,
+                }).ToList();
         }
 
-        public async Task<TaskModel> GetTaskByIdAsync(int id)
+        public async Task<GetTaskDto> GetTaskById(int id)
         {
-            return await _context.Tasks.FindAsync(id);
+            var task = await _context.Tasks.FindAsync(id);
+            return new GetTaskDto
+            {
+                Id = task.Id,
+                Title = task.Title,
+                Description = task.Description,
+                Status = task.Status,
+            };
         }
 
-        public async Task AddTaskAsync(TaskModel task)
+        public async Task<int> AddTask(CreateTaskDto task)
         {
-            _context.Tasks.Add(task);
+            var taskModel = new TaskModel
+            {
+                Title = task.Title,
+                Description = task.Description,
+            }; 
+
+            _context.Tasks.Add(taskModel);
             await _context.SaveChangesAsync();
+            return taskModel.Id;
         }
 
-        public async Task UpdateTaskAsync(TaskModel task)
+        public async Task UpdateTask(int id, UpdateTaskDto task)
         {
-            _context.Entry(task).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            var taskModel = await _context.Tasks.FindAsync(id);
+            if (taskModel != null)
+            {
+                taskModel.Title = task.Title;
+                taskModel.Description = task.Description;
+                await _context.SaveChangesAsync();
+            }
         }
 
-        public async Task DeleteTaskAsync(int id)
+        public async Task ChangeStatusTask(int id, Domain.Enums.TaskStatusEnum taskStatus)
+        {
+            var task = await _context.Tasks.FindAsync(id);
+            if (task != null)
+            {
+                task.Status = taskStatus;
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task DeleteTask(int id)
         {
             var task = await _context.Tasks.FindAsync(id);
             if (task != null)

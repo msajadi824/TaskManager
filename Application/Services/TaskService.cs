@@ -1,4 +1,5 @@
-﻿using Application.Repositories;
+﻿using Application.Dtos;
+using Application.Repositories;
 using Domain.Models;
 
 namespace Domain.Application
@@ -12,29 +13,34 @@ namespace Domain.Application
             _taskRepository = taskRepository;
         }
 
-        public async Task<IEnumerable<TaskModel>> GetTasksAsync()
+        public async Task<IEnumerable<GetTaskDto>> GetTasks()
         {
-            return await _taskRepository.GetTasksAsync();
+            return await _taskRepository.GetTasks();
         }
 
-        public async Task<TaskModel> GetTaskByIdAsync(int id)
+        public async Task<GetTaskDto> GetTaskById(int id)
         {
-            return await _taskRepository.GetTaskByIdAsync(id);
+            return await _taskRepository.GetTaskById(id);
         }
 
-        public async Task AddTaskAsync(TaskModel task)
+        public async Task<int> AddTask(CreateTaskDto task)
         {
-            await _taskRepository.AddTaskAsync(task);
+            return await _taskRepository.AddTask(task);
         }
 
-        public async Task UpdateTaskAsync(TaskModel task)
+        public async Task UpdateTask(int id, UpdateTaskDto task)
         {
-            await _taskRepository.UpdateTaskAsync(task);
+            await _taskRepository.UpdateTask(id, task);
         }
 
-        public async Task DeleteTaskAsync(int id)
+        public async Task ChangeStatusTask(int id, Enums.TaskStatusEnum taskStatus)
         {
-            await _taskRepository.DeleteTaskAsync(id);
+            await _taskRepository.ChangeStatusTask(id, taskStatus);
+        }
+
+        public async Task DeleteTask(int id)
+        {
+            await _taskRepository.DeleteTask(id);
         }
     }
 }

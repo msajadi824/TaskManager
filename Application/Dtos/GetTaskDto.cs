@@ -1,10 +1,12 @@
-﻿namespace Domain.Models
+﻿using Domain.Enums;
+
+namespace Application.Dtos
 {
-    public class TaskModel
+    public class GetTaskDto
     {
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public Enums.TaskStatusEnum Status { get; set; }
+        public TaskStatusEnum Status { get; set; }
     }
 }

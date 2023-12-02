@@ -1,6 +1,8 @@
-﻿using Domain.Application;
+﻿using Application.Dtos;
+using Domain.Application;
 using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace WebApi.Controllers
 {
@@ -18,14 +20,14 @@ namespace WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetTasks()
         {
-            var tasks = await _taskService.GetTasksAsync();
+            var tasks = await _taskService.GetTasks();
             return Ok(tasks);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTaskById(int id)
         {
-            var task = await _taskService.GetTaskByIdAsync(id);
+            var task = await _taskService.GetTaskById(id);
             if (task == null)
             {
                 return NotFound();
@@ -35,28 +37,30 @@ namespace WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddTask([FromBody] TaskModel task)
+        public async Task<IActionResult> AddTask([FromBody] CreateTaskDto task)
         {
-            await _taskService.AddTaskAsync(task);
-            return CreatedAtAction(nameof(GetTaskById), new { id = task.Id }, task);
+            int Id = await _taskService.AddTask(task);
+            return CreatedAtAction(nameof(GetTaskById), new { id = Id }, task);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateTask(int id, [FromBody] TaskModel task)
+        public async Task<IActionResult> UpdateTask(int id, [FromBody] UpdateTaskDto task)
         {
-            if (id != task.Id)
-            {
-                return BadRequest();
-            }
+            await _taskService.UpdateTask(id, task);
+            return NoContent();
+        }
 
-            await _taskService.UpdateTaskAsync(task);
+        [HttpPatch("{id}/{taskStatus}")]
+        public async Task<IActionResult> ChangeStatusTask(int id, Domain.Enums.TaskStatusEnum taskStatus)
+        {
+            await _taskService.ChangeStatusTask(id, taskStatus);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTask(int id)
         {
-            await _taskService.DeleteTaskAsync(id);
+            await _taskService.DeleteTask(id);
             return NoContent();
         }
     }

@@ -23,6 +23,7 @@ builder.Services.AddDbContext<AppDbContext>(
         );
 builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 builder.Services.AddScoped<TaskService>();
+//builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 var app = builder.Build();
 
