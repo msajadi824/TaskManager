@@ -9,6 +9,7 @@ using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Internal;
 using System.Text.Json.Serialization;
+using WebApi.Exceptions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,6 +49,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.MapControllers();
 

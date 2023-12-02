@@ -32,13 +32,16 @@ namespace Infrastructure.Repositories
         public async Task<GetTaskDto> GetTaskById(int id)
         {
             var task = await _context.Tasks.FindAsync(id);
-            return new GetTaskDto
-            {
-                Id = task.Id,
-                Title = task.Title,
-                Description = task.Description,
-                Status = task.Status,
-            };
+            if (task != null)
+                return new GetTaskDto
+                {
+                    Id = task.Id,
+                    Title = task.Title,
+                    Description = task.Description,
+                    Status = task.Status,
+                };
+            else
+                throw new KeyNotFoundException();
         }
 
         public async Task<int> AddTask(CreateTaskDto task)
@@ -63,6 +66,8 @@ namespace Infrastructure.Repositories
                 taskModel.Description = task.Description;
                 await _context.SaveChangesAsync();
             }
+            else
+                throw new KeyNotFoundException();
         }
 
         public async Task ChangeStatusTask(int id, Domain.Enums.TaskStatusEnum taskStatus)
@@ -73,6 +78,8 @@ namespace Infrastructure.Repositories
                 task.Status = taskStatus;
                 await _context.SaveChangesAsync();
             }
+            else
+                throw new KeyNotFoundException();
         }
 
         public async Task DeleteTask(int id)
@@ -83,6 +90,8 @@ namespace Infrastructure.Repositories
                 _context.Tasks.Remove(task);
                 await _context.SaveChangesAsync();
             }
+            else
+                throw new KeyNotFoundException();
         }
     }
 }
