@@ -3,6 +3,7 @@ using Domain.Application;
 using Infrastructure.Context;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql.Internal;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +14,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))));
+builder.Services.AddDbContext<AppDbContext>(
+        options => options.UseMySql(
+            builder.Configuration.GetConnectionString("DefaultConnection"), 
+            ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection")),
+            mysqlOptions => mysqlOptions.MigrationsAssembly("WebApi")
+            )
+        );
 builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 builder.Services.AddScoped<TaskService>();
 
