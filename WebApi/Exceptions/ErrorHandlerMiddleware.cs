@@ -1,5 +1,4 @@
-﻿using Application.Exceptions;
-using System.Net;
+﻿using System.Net;
 using System.Text.Json;
 
 namespace WebApi.Exceptions

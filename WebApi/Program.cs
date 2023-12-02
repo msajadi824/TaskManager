@@ -7,7 +7,7 @@ using FluentValidation.AspNetCore;
 using Infrastructure.Context;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Pomelo.EntityFrameworkCore.MySql.Internal;
+using System.Reflection;
 using System.Text.Json.Serialization;
 using WebApi.Exceptions;
 
@@ -24,7 +24,11 @@ builder.Services.AddTransient<IValidator<CreateTaskDto>, CreateTaskValidator>();
 builder.Services.AddTransient<IValidator<UpdateTaskDto>, UpdateTaskValidator>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory,
+    $"{Assembly.GetExecutingAssembly().GetName().Name}.xml"));
+});
 
 builder.Services.AddDbContext<AppDbContext>(
         options => options.UseMySql(

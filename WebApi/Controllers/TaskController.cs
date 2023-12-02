@@ -17,6 +17,10 @@ namespace WebApi.Controllers
             _taskService = taskService;
         }
 
+        /// <summary>
+        /// دریافت همه تسک ها
+        /// </summary>
+        /// <returns></returns>
         [HttpGet(Name = "GellAllTasks")]
         public async Task<IActionResult> GetTasks()
         {
@@ -24,6 +28,11 @@ namespace WebApi.Controllers
             return Ok(tasks);
         }
 
+        /// <summary>
+        /// جزئیات یک تسک
+        /// </summary>
+        /// <param name="id">آی دی تسک</param>
+        /// <returns></returns>
         [HttpGet("{id}", Name = "GetTaskById")]
         public async Task<IActionResult> GetTaskById(int id)
         {
@@ -36,6 +45,11 @@ namespace WebApi.Controllers
             return Ok(task);
         }
 
+        /// <summary>
+        /// افزودن تسک
+        /// </summary>
+        /// <param name="task">مشخصات تسک</param>
+        /// <returns></returns>
         [HttpPost(Name = "AddTask")]
         public async Task<IActionResult> AddTask([FromBody] CreateTaskDto task)
         {
@@ -43,6 +57,12 @@ namespace WebApi.Controllers
             return CreatedAtAction(nameof(GetTaskById), new { id = Id }, task);
         }
 
+        /// <summary>
+        /// ویرایش یک تسک
+        /// </summary>
+        /// <param name="id">آی دی تسک</param>
+        /// <param name="task">مشخصات جدید</param>
+        /// <returns></returns>
         [HttpPut("{id}", Name = "UpdateTask")]
         public async Task<IActionResult> UpdateTask(int id, [FromBody] UpdateTaskDto task)
         {
@@ -50,6 +70,12 @@ namespace WebApi.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// تغییر وضعیت تسک
+        /// </summary>
+        /// <param name="id">ای دی تسک</param>
+        /// <param name="taskStatus">وضعیت جدید</param>
+        /// <returns></returns>
         [HttpPatch("{id}/{taskStatus}", Name = "ChangeStatusTask")]
         public async Task<IActionResult> ChangeStatusTask(int id, Domain.Enums.TaskStatusEnum taskStatus)
         {
@@ -57,6 +83,11 @@ namespace WebApi.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// حذف یک تسک
+        /// </summary>
+        /// <param name="id">ای دی تسک</param>
+        /// <returns></returns>
         [HttpDelete("{id}", Name = "DeleteTask")]
         public async Task<IActionResult> DeleteTask(int id)
         {
